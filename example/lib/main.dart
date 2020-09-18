@@ -1,5 +1,8 @@
-import 'package:flutter_particle_bg/flutter_particle_bg.dart';
+// import 'package:example/exp.dart';
+// import './exp.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_particle_bg/flutter_particle_bg.dart';
+// import 'exp.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: MooooooBackground(
+          bgimg: AssetImage('assets/bg.png'),
           child: ListView(
             children: [
               Text('列表元素'),
@@ -54,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.red[200].withOpacity(0.6),
                 margin: EdgeInsets.fromLTRB(20, 30, 20, 30),
                 alignment: Alignment.center,
-                child: Text('这是列表元素'),
+                child: Text('这是列表元1素'),
               )
             ],
           ),

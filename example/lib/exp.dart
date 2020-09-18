@@ -1,10 +1,11 @@
 library flutter_particle_bg;
 
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class MooooooBackground extends StatelessWidget {
+class MoooooosBackground extends StatelessWidget {
   final Widget child;
   final double pointsize; // 点大小
   final Color pointcolor; // 点颜色
@@ -15,7 +16,7 @@ class MooooooBackground extends StatelessWidget {
   final Color backgroundcolor; // 粒子位置背景
   final double pointspeed; // 粒子运行速度
   final AssetImage bgimg; // 背景
-  MooooooBackground(
+  MoooooosBackground(
       {this.child,
       this.pointsize = 4.0,
       this.pointcolor = Colors.red,
@@ -40,7 +41,6 @@ class MooooooBackground extends StatelessWidget {
           linewidth: linewidth,
           distancefar: distancefar,
           pointspeed: pointspeed,
-          bgimg: bgimg,
         ),
         child,
       ],
