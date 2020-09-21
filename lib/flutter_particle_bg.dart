@@ -1,9 +1,18 @@
 library flutter_particle_bg;
 
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
+/// child 子元素
+/// pointsize; // 点大小
+/// pointcolor; // 点颜色
+/// linewidth; // 线宽度
+/// linecolor; // 线颜色
+/// pointnumber; // 圆点数量
+/// distancefar; //划线距离
+/// backgroundcolor; // 粒子位置背景
+/// pointspeed; // 粒子运行速度
+/// bgimg; // 背景
 class MooooooBackground extends StatelessWidget {
   final Widget child;
   final double pointsize; // 点大小
@@ -18,13 +27,13 @@ class MooooooBackground extends StatelessWidget {
   MooooooBackground(
       {this.child,
       this.pointsize = 4.0,
-      this.pointcolor = Colors.red,
+      this.pointcolor = Colors.white,
       this.linewidth = 0.5,
-      this.linecolor = Colors.red,
+      this.linecolor = Colors.white,
       this.pointnumber = 20,
-      this.distancefar = 120.0,
+      this.distancefar = 80.0,
       this.backgroundcolor = Colors.white,
-      this.pointspeed = 0.8,
+      this.pointspeed = 0.5,
       this.bgimg});
 
   @override
@@ -48,6 +57,12 @@ class MooooooBackground extends StatelessWidget {
   }
 }
 
+/// x 当前点x坐标
+/// y 当前点y坐标
+/// vx 当前点沿x周方向 true + false -
+/// vy 当前点沿y周方向 true + false -
+/// x1 划线终点x坐标
+/// y1 划线终点y坐标
 class Pointvector {
   double x;
   double y;
@@ -59,6 +74,15 @@ class Pointvector {
   Pointvector({this.x, this.y, this.vx, this.vy, this.x1, this.y1});
 }
 
+/// pointsize; // 点大小
+/// pointcolor; // 点颜色
+/// linewidth; // 线宽度
+/// linecolor; // 线颜色
+/// pointnumber; // 圆点数量
+/// distancefar; //划线距离
+/// backgroundcolor; // 粒子位置背景
+/// pointspeed; // 粒子运行速度
+/// bgimg; // 背景
 class Backgroundparticle extends StatefulWidget {
   final double pointsize; // 点大小
   final Color pointcolor; // 点颜色
@@ -71,13 +95,13 @@ class Backgroundparticle extends StatefulWidget {
   final AssetImage bgimg; // 背景
   Backgroundparticle(
       {this.pointsize = 4.0,
-      this.pointcolor = Colors.red,
+      this.pointcolor = Colors.white,
       this.linewidth = 0.5,
-      this.linecolor = Colors.red,
+      this.linecolor = Colors.white,
       this.pointnumber = 20,
-      this.distancefar = 120.0,
+      this.distancefar = 80.0,
       this.backgroundcolor = Colors.white,
-      this.pointspeed = 0.8,
+      this.pointspeed = 0.5,
       this.bgimg});
 
   @override
@@ -195,6 +219,11 @@ class _BackgroundparticleState extends State<Backgroundparticle>
   @override
   void dispose() {
     super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
     animationDemoController.dispose();
   }
 
@@ -228,6 +257,13 @@ class _BackgroundparticleState extends State<Backgroundparticle>
   }
 }
 
+/// 画图方法
+/// pointList 点的位置
+/// linespoint 划线的点列表（2点确定一条直线）
+/// pointsize 点大小
+/// pointcolor 点击颜色
+/// linewidth 线宽度
+/// linecolor 线颜色
 class PaintAnimationPoint extends CustomPainter {
   final List<Pointvector> pointList;
   final List<Pointvector> linespoint;
@@ -267,9 +303,12 @@ class PaintAnimationPoint extends CustomPainter {
     }
   }
 
+  // 启动重复画图
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
 
+///
+///计算2点之间的额距离
 class PointFormat {
   static distanceTo(double x, double y, double dx1, double dy1) {
     var dx = x - dx1;

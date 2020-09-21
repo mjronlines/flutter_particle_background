@@ -1,5 +1,6 @@
 // import 'package:example/exp.dart';
 // import './exp.dart';
+import 'package:example/other.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_particle_bg/flutter_particle_bg.dart';
 // import 'exp.dart';
@@ -49,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: MooooooBackground(
+          pointcolor: Colors.white.withOpacity(0.2),
           bgimg: AssetImage('assets/bg.png'),
           child: ListView(
             children: [
@@ -59,6 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: EdgeInsets.fromLTRB(20, 30, 20, 30),
                 alignment: Alignment.center,
                 child: Text('这是列表元1素'),
+              ),
+              ListTile(
+                title: Text(
+                  '第二个页面',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SecondPage(),
+                  ));
+                },
               )
             ],
           ),

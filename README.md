@@ -31,3 +31,19 @@ The page implements the particle background effect(页面实现粒子背景效�
         ));
   }
 ```
+### 相关参数
+
+```
+  double pointsize; // 点大小
+  Color pointcolor; // 点颜色
+  double linewidth; // 线宽度
+  Color linecolor; // 线颜色
+  double pointnumber; // 圆点数量
+  double distancefar; //划线距离
+  Color backgroundcolor; // 粒子位置背景
+  double pointspeed; // 粒子运行速度
+  AssetImage bgimg; // 背景
+```
+
+
+

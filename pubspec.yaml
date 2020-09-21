@@ -1,6 +1,6 @@
 name: flutter_particle_bg
 description: The page implements the particle background effect(页面实现粒子背景效果)
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/mjronlines/flutter_particle_background
 
 environment:
