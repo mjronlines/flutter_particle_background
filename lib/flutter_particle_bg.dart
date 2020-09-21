@@ -63,6 +63,7 @@ class MooooooBackground extends StatelessWidget {
 /// vy 当前点沿y周方向 true + false -
 /// x1 划线终点x坐标
 /// y1 划线终点y坐标
+/// 移动速度
 class Pointvector {
   double x;
   double y;
@@ -70,8 +71,18 @@ class Pointvector {
   double y1;
   bool vx;
   bool vy;
+  double movex;
+  double movey;
 
-  Pointvector({this.x, this.y, this.vx, this.vy, this.x1, this.y1});
+  Pointvector(
+      {this.x,
+      this.y,
+      this.vx,
+      this.vy,
+      this.x1,
+      this.y1,
+      this.movex,
+      this.movey});
 }
 
 /// pointsize; // 点大小
@@ -162,14 +173,18 @@ class _BackgroundparticleState extends State<Backgroundparticle>
         pointvector.y = rd.nextInt(size.height.toInt() - 1).toDouble();
         pointvector.vx = rd.nextInt(10) > 5 ? true : false;
         pointvector.vy = rd.nextInt(10) > 5 ? true : false;
+        pointvector.movex =
+            this.widget.pointspeed + (rd.nextDouble() / 3).toDouble();
+        pointvector.movey =
+            this.widget.pointspeed + (rd.nextDouble() / 3).toDouble();
         pointList.add(pointvector);
       }
     }
 
     for (var i = 0; i < pointList.length; i++) {
-      double x = this.widget.pointspeed;
-      double y = this.widget.pointspeed;
-      if (pointList[i].x + x > (size.width - 2)) {
+      // double x = this.widget.pointspeed;
+      // double y = this.widget.pointspeed;
+      if (pointList[i].x + pointList[i].movex > (size.width - 2)) {
         pointList[i].vx = false;
       }
 
@@ -177,10 +192,11 @@ class _BackgroundparticleState extends State<Backgroundparticle>
         pointList[i].vx = true;
       }
 
-      pointList[i].x =
-          pointList[i].vx ? pointList[i].x + x : pointList[i].x - x;
+      pointList[i].x = pointList[i].vx
+          ? pointList[i].x + pointList[i].movex
+          : pointList[i].x - pointList[i].movex;
 
-      if (pointList[i].y + y > (size.height - 100)) {
+      if (pointList[i].y + pointList[i].movey > (size.height - 100)) {
         pointList[i].vy = false;
       }
 
@@ -188,8 +204,9 @@ class _BackgroundparticleState extends State<Backgroundparticle>
         pointList[i].vy = true;
       }
 
-      pointList[i].y =
-          pointList[i].vy ? pointList[i].y + y : pointList[i].y - y;
+      pointList[i].y = pointList[i].vy
+          ? pointList[i].y + pointList[i].movey
+          : pointList[i].y - pointList[i].movey;
     }
     linespoint.removeRange(0, linespoint.length);
 
